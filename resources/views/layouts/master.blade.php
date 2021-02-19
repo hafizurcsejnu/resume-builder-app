@@ -1,4 +1,4 @@
-        
+
 <!doctype html>
 <html lang="en">
 
@@ -21,11 +21,11 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/node_modules/bootstrap-duallistbox/dist/bootstrap-duallistbox.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/node_modules/select2/dist/css/select2.css')}}">
     {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" /> --}}
-   
+
 
     <link rel="stylesheet" type="text/css" href="{{asset('assets/node_modules/chosen-js/chosen.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/node_modules/summernote/dist/summernote-lite.css')}}">
-    
+
 
 
 
@@ -38,16 +38,17 @@
     <!-- ace.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/dist/css/ace.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/dist/css/jquery-ui.css')}}">
-    
+
     <!-- favicon -->
     <link rel="icon" type="image/png" href="{{asset('assets/assets/favicon.png')}}" />
 
     <!-- "Dashboard" page styles, specific to this page for demo only -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/views/pages/dashboard/@page-style.css')}}">
     {{-- <link rel="stylesheet" type="text/css" href="{{asset('assets/views/pages/form-wysiwyg/@page-style.css')}}"> --}}
-    
+
 
     <link rel="stylesheet" type="text/css" href="{{asset('assets/dist/css/custom.css')}}">
+    @stack('in-page-style')
     <script src="{{asset('assets/node_modules/jquery/dist/jquery.js')}}"></script>
 
     <script src="{{asset('assets/node_modules/chosen-js/chosen.jquery.js')}}"></script>
@@ -124,9 +125,9 @@
                         <div class="col-lg-8 col-12 p-2 p-lg-8 p-xl-4 d-flex flex-column align-items-center">
                           <div class="contact_message">
                             Report any Issues with the application or contact us directly at  <a href="mailto:myresumedash@gmail.com">MyResumeDash@gmail.com</a>
-                           <address>12020 Sunrise Valley Drive, Suite 100, Reston, Virginia, 20191</address> 
+                           <address>12020 Sunrise Valley Drive, Suite 100, Reston, Virginia, 20191</address>
                           </div>
-                         
+
 
                           {{-- <div class="w-100 mb-3">
                             <h5 class="col-lg-9 mx-auto text-dark-m2 px-0">
@@ -200,10 +201,10 @@
                                 Tortor mauris condimentum nibh, fusce dapibus...
                               </div>
                             </div>
-                          </div> 
+                          </div>
 
                         </div>--}}
-                        
+
                         <!-- .col:mega notifications -->
 
 
@@ -245,7 +246,7 @@
                   </div>
                 </li>
 
-                {{-- 
+                {{--
 
                 <li class="nav-item dropdown dropdown-mega">
                   <a class="nav-link dropdown-toggle pl-lg-3 pr-lg-4" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
@@ -554,8 +555,8 @@
                       </button>
                     </div>
                   </div>
-                </div>               
-               
+                </div>
+
               </div>
 
               <ul class="nav has-active-border active-on-right">
@@ -635,7 +636,7 @@
                       </li>
 
 
-                     
+
                     </ul>
                   </div>
 
@@ -645,10 +646,10 @@
 
 
 
-               
-                
+
+
                 <li class="nav-item">
-                  <a href="/my-documents" class="nav-link">
+                  <a href="my-documents" class="nav-link">
                     <i class="nav-icon fa fa-folder"></i>
                     <span class="nav-text fadeable">
                	  <span>My Documents</span>
@@ -691,12 +692,12 @@
 
 
 
- 
+
                 {{--
                   <li class="nav-item-caption">
                   <span class="fadeable pl-3">OTHER</span>
                   <span class="fadeinable mt-n2 text-125">&hellip;</span>
-                 
+
                 </li>
 
 
@@ -878,7 +879,7 @@
                         <div class="text-80 text-grey">
                           User
                         </div>
-                      </div> 
+                      </div>
                     </div>
 
                     <a href="#" class="d-style btn btn-outline-primary btn-h-light-primary btn-a-light-primary border-0 p-2 mr-2px ml-4" title="Settings" data-toggle="modal" data-target="#id-ace-settings-modal">
@@ -896,7 +897,7 @@
           </div>
         </div>
 
-        
+
   <div role="main" class="main-content">
 
     <div class="container flash-message mt-2">
@@ -910,11 +911,11 @@
 		@yield('main_content')
 
         <footer class="footer d-none d-sm-block">
-            <div class="footer-inner bgc-white-tp1">              
+            <div class="footer-inner bgc-white-tp1">
 
-              <div class="pt-3 border-none border-t-3 brc-grey-l2 border-double">              
+              <div class="pt-3 border-none border-t-3 brc-grey-l2 border-double">
 
-                  
+
                 <span class="text-primary-m1 font-bolder text-120">MyResumeDash, Inc</span>
                 <span class="text-grey"> &copy; 2020</span>
 
@@ -929,12 +930,12 @@
                   Conditions</a>
                 </span>
 
-                
-                   
+
+
 
               </div>
 
-              
+
             </div><!-- .footer-inner -->
 
             <!-- `scroll to top` button inside footer (for example when in boxed layout) -->
@@ -1336,7 +1337,7 @@
                           <i class="fa fa-check text-muted v-active"></i>
                           <input type="radio" name="navbar-light" value="lightyellow"  />
                         </label>
-        
+
                         <label class="btn btn-xs border-0 navbar-khaki d-style m-1px">
                           <i class="fa fa-check text-muted v-active"></i>
                           <input type="radio" name="navbar-light" value="khaki"  />
@@ -1463,7 +1464,7 @@
                     <!--
                   <div class="mt-3 d-none d-xl-flex justify-content-between align-items-center">
                       <label for="id-sidebar-compact" class="pl-1 text-grey-d2">Compact</label>
-        
+
                       <div class="custom-control custom-switch d-inline-block">
                         <input type="checkbox" class="custom-control-input" id="id-sidebar-compact"  />
                         <label class="custom-control-label" for="id-sidebar-compact"></label>
@@ -1556,20 +1557,24 @@
     </script>
 
     <!-- include common vendor scripts used in demo pages -->
-
+    <script>
+    let APP_URL = "{{ url('/') }}";
+    let storageUrl = "{{Storage::url('/')}}";
+    </script>
+  <script src="{{asset('assets/dist/js/lightbox-plus-jquery.min.js')}}"></script>
     <script src="{{asset('assets/node_modules/popper.js/dist/umd/popper.js')}}"></script>
     <script src="{{asset('assets/node_modules/bootstrap/dist/js/bootstrap.js')}}"></script>
     <script src="{{asset('assets/node_modules/summernote/dist/summernote-lite.js')}}"></script>
     <!-- include vendor scripts used in "Dashboard" page. see "/views//pages/partials/dashboard/@vendor-scripts.hbs" -->
     <script src="{{asset('assets/node_modules/chart.js/dist/Chart.js')}}"></script>
-
+    <script src="{{asset('assets/js/sweetalert.min.js')}}"></script>
 
     <script src="{{asset('assets/node_modules/bootstrap-select/dist/js/bootstrap-select.js')}}"></script>
     <script src="{{asset('assets/node_modules/bootstrap-duallistbox/dist/jquery.bootstrap-duallistbox.js')}}"></script>
     <script src="{{asset('assets/node_modules/select2/dist/js/select2.js')}}"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script> --}}
 
-   
+
 
 
     <script src="{{asset('assets/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.js')}}"></script> --}}
@@ -1582,11 +1587,11 @@
     <script src="{{asset('assets/app/browser/demo.js')}}"></script>
 
     <!-- "Dashboard" page script to enable its demo functionality -->
-    <script src="{{asset('assets/views/pages/dashboard/@page-script.js')}}"></script>
+    <!-- <script src="{{asset('assets/views/pages/dashboard/@page-script.js')}}"></script>
     <script src="{{asset('assets/views/pages/form-basic/@page-script.js')}}"></script>
     <script src="{{asset('assets/views/pages/form-wysiwyg/@page-script.js')}}"></script>
-    <script src="{{asset('assets/views/pages/form-more/@page-script.js')}}"></script>
-   
+    <script src="{{asset('assets/views/pages/form-more/@page-script.js')}}"></script> -->
+    @stack('in-page-scripts')
   </body>
 
 </html>

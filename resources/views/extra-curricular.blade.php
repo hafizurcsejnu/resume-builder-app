@@ -15,9 +15,8 @@ $section_name='Extra-Curricular';
         <small class="page-info text-secondary-d2 text-nowrap">
           <i class="fa fa-angle-double-right text-80"></i>
           {{-- overview &amp; stats --}}
-          Showcase your activities and honors to an employer 
-        </small>    
-
+          Showcase your activities and honors to an employer
+        </small>
       </h1>
       
      
@@ -62,7 +61,7 @@ $section_name='Extra-Curricular';
         <div class="card border-0 shadow-sm">
           <div class="card-header bgc-default-d2">
             <h3 class="card-title text-white text-130">
-              Your selected activities   @include('_section_modal')
+              Your selected activities
             </h3>
           </div>
 

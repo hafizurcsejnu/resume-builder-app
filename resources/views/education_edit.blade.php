@@ -24,10 +24,10 @@ $section_name='Education';
       <div class="col-12 col-lg-12">
         <div class="card bcard h-100">
           <div class="border-t-3 w-100 brc-info-m1 radius-t-1"></div><!-- the colored line on top of stats -->
-          
+
           <div class="card-header">
             <h2 class="card-title text-grey-d1 pl-1">
-              Update Education:    @include('_section_modal')
+              Update Education:
             </h2>
           </div>        
 
