@@ -20,8 +20,8 @@ class ResumeController extends Controller
     {
         $resume = Resume::where(['user_id' => session('user.id')])
         ->orderBy('id', 'desc')
-        ->get(); 
-        if($resume) 
+        ->get();
+        if($resume)
         {
             return view('my_resumes', ['data'=>$resume]);
         }
@@ -34,7 +34,7 @@ class ResumeController extends Controller
     public function create(Request $request)
     {
         $request->Session()->put('temp_id', $request->temp_id);
-       
+
         $template = DB::table('templates')
             ->where('id', $request->temp_id)
             ->first();
@@ -43,8 +43,8 @@ class ResumeController extends Controller
 
         $resume = new Resume;
         $resume->user_id = session('user.id');
-        $resume->temp_id = session('temp_id'); 
-        $resume->name = $template_name." ".date("M-d-Y");         
+        $resume->temp_id = session('temp_id');
+        $resume->name = $template_name." ".date("M-d-Y");
         $resume->save();
         $resume->id;
 
@@ -60,18 +60,18 @@ class ResumeController extends Controller
             $data->name = $section->name;
             $data->active = $section->active;
             $data->save();
-        }      
+        }
 
         $request->session()->put('resume_id', $resume->id);
         return redirect('/header');
     }
 
-    public function save_resume_name(Request $request){       
+    public function save_resume_name(Request $request){
 
         $data = Resume::find(session('resume_id'));
         $data->name = $request->resume_name;
         $data->status = 'updated';
-        $data->save(); 
+        $data->save();
 
         return response()->json(['success'=>true]);
     }
@@ -95,8 +95,8 @@ class ResumeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   
-   
+
+
      /**
      * Store a newly created resource in storage.
      *
@@ -115,42 +115,42 @@ class ResumeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     
+
 
     public function show($id)
     {
         $template = DB::table('resumes')
                 ->where('id', '=', $id)
                 ->first();
-        $header = DB::table('headers')                
+        $header = DB::table('headers')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->first();
-        $educations = DB::table('educations')  
+        $educations = DB::table('educations')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->get();
-        $experiences = DB::table('experiences')  
+        $experiences = DB::table('experiences')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->get();
-        $activities = DB::table('activities')  
+        $activities = DB::table('activities')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->first();
-        $certifications = DB::table('certifications')  
+        $certifications = DB::table('certifications')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->get();
-        $skills = DB::table('skills')  
+        $skills = DB::table('skills')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->first();
-        $professional_summaries = DB::table('professional_summaries')  
+        $professional_summaries = DB::table('professional_summaries')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
-                ->first();                
-        $additionals = DB::table('additionals')  
+                ->first();
+        $additionals = DB::table('additionals')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->first();
@@ -161,36 +161,36 @@ class ResumeController extends Controller
     }
     public function pdf($id)
     {
-        
-        $header = DB::table('headers')                
+
+        $header = DB::table('headers')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->first();
-        $educations = DB::table('educations')  
+        $educations = DB::table('educations')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->get();
-        $experiences = DB::table('experiences')  
+        $experiences = DB::table('experiences')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->get();
-        $activities = DB::table('activities')  
+        $activities = DB::table('activities')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->first();
-        $certifications = DB::table('certifications')  
+        $certifications = DB::table('certifications')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->get();
-        $skills = DB::table('skills')  
+        $skills = DB::table('skills')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->first();
-        $professional_summaries = DB::table('professional_summaries')  
+        $professional_summaries = DB::table('professional_summaries')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
-                ->first();                
-        $additionals = DB::table('additionals')  
+                ->first();
+        $additionals = DB::table('additionals')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->first();
@@ -198,7 +198,7 @@ class ResumeController extends Controller
         //dd($additionals);
         $pdf = PDF::loadView('resume', ['header'=>$header, 'educations'=>$educations, 'experiences'=>$experiences, 'certifications'=>$certifications,'activity'=>$activities,  'skill'=>$skills, 'professional_summary'=>$professional_summaries, 'additional'=>$additionals, 'resume_id'=>$id ]);
 
-        
+
         if($header!=null){
             $name = $header->first_name;
         }else{
@@ -213,35 +213,35 @@ class ResumeController extends Controller
         $wordTest = new \PhpOffice\PhpWord\PhpWord();
         $newSection = $wordTest->addSection();
 
-        $header = DB::table('headers')                
+        $header = DB::table('headers')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->first();
-        $educations = DB::table('educations')  
+        $educations = DB::table('educations')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->get();
-        $experiences = DB::table('experiences')  
+        $experiences = DB::table('experiences')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->get();
-        $activities = DB::table('activities')  
+        $activities = DB::table('activities')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->first();
-        $certifications = DB::table('certifications')  
+        $certifications = DB::table('certifications')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->get();
-        $skills = DB::table('skills')  
+        $skills = DB::table('skills')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->first();
-        $professional_summaries = DB::table('professional_summaries')  
+        $professional_summaries = DB::table('professional_summaries')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
-                ->first();                
-        $additionals = DB::table('additionals')  
+                ->first();
+        $additionals = DB::table('additionals')
                 ->where('user_id', '=', session('user.id'))
                 ->where('resume_id', '=', $id)
                 ->first();
@@ -249,8 +249,8 @@ class ResumeController extends Controller
 
         $desc1 = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint ipsam quam id fuga at quasi, reprehenderit iste? Eligendi ducimus illum ea voluptatibus, quod fuga omnis corporis provident vero, cum incidunt.";
 
-        $title =  $header->first_name;    
-        //dd($desc2);    
+        $title =  $header->first_name;
+        //dd($desc2);
 
         $newSection->addTitle($title, );
         $newSection->addText($desc1);

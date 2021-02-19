@@ -11,7 +11,7 @@ $section_name='Skills';
   <div class="page-content container container-plus">
     <div class="page-header pb-2">
       <h1 class="page-title text-primary-d2 text-150">
-        Let’s pick your top skills    
+        Let’s pick your top skills     
       </h1>
     </div>
 
@@ -48,14 +48,12 @@ $section_name='Skills';
         </div>
       </div>
 
-      <div class="col-12 col-lg-6">       
+      <div class="col-12 col-lg-6">
 
         <div class="card border-0 shadow-sm">
           <div class="card-header bgc-default-d2">
-            
-
             <h3 class="card-title text-white text-130">
-              Your selected skills @include('_section_modal')
+              Your selected skills
             </h3>
           </div>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Helper\Helper;
 
 class UserController extends Controller
 {
@@ -75,7 +76,10 @@ class UserController extends Controller
         if($is_user){
             return redirect()->back()->with(session()->flash('alert-danger', 'This email is already registered.'));
         }
-
+/**
+ * [$user description]
+ * @var User
+ */
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email; 
@@ -105,6 +109,7 @@ class UserController extends Controller
         $data->is_verified = '1';
         $data->verification_code = sha1(time());
         $data->save();
+        Helper::saveDefaultFolders($data->id);
         return redirect()->back()->with(session()->flash('alert-success', 'New user created.'));
     }
    

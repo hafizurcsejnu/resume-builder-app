@@ -76,7 +76,7 @@ $section_name='Header';
                       $collection = DB::table('city_states')->get();
                   ?> 
                  @foreach ($collection as $item)                  
-                  <option value="{{$item->state_city}}"> {{$item->state_name}} | {{$item->state_city}}
+                  <option value="{{$item->state_city}}">
                   @endforeach
                 </datalist>
 

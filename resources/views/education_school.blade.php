@@ -27,7 +27,7 @@ $section_name='Education';
 
           <div class="card-header">
             <h2 class="card-title text-grey-d1 pl-1">
-              Add Education:   @include('_section_modal')
+              Add Education:
             </h2>
           </div>        
 

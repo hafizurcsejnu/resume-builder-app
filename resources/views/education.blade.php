@@ -7,11 +7,7 @@ $section_name='Education';
 @include('_next_url')
 @include('_prev_url') 
     
-<style>
-  .link_area a {
-    font-size: 30px;
-}
-</style>
+
   <div class="page-content container container-plus">
     <div class="page-header pb-2">
       <h1 class="page-title text-primary-d2 text-150">
@@ -47,8 +43,7 @@ $section_name='Education';
                     <a href="/add-college" class="btn btn-default" style="width: 200px;" id="college">College</a>
                   </div>
                   <div class="col-md-4">
-                    <a href="{{session('prev_url')}}" style="width: 100%; width: 100%;
-                    height: 60px; font-size: 18px; padding-top: 14px;" class="btn btn-outline-lightgrey btn-bgc-white btn-bold ml-2 px-4" type="reset">
+                    <a href="{{session('prev_url')}}" style="width: 100%" class="btn btn-outline-lightgrey btn-bgc-white btn-bold ml-2 px-4" type="reset">
                       <i class="fa fa-arrow-left mr-1"></i>
                       Back
                     </a>
