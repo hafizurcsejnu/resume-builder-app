@@ -8,6 +8,7 @@ use App\Http\Requests\EditFileRequest;
 use App\Models\File;
 use Response;
 use App\Services\FileServices;
+use Storage;
 
 class FileController extends Controller
 {
@@ -53,7 +54,7 @@ class FileController extends Controller
 				}
 			}
 			return Response::json(array('success' => 'success', 'message' => __('documents.warningMessage.file_renamed')), 422);
-			
+
 		} catch (Exception $e) {
 			return Response::json(array('success' => 'error', 'message' => __('documents.errorMessage.file_renamed')), 500);
 		}
@@ -136,5 +137,16 @@ class FileController extends Controller
 		} catch (Exception $e) {
 			return Response::json(array('success' => 'error', 'message' => __('documents.errorMessage.file_copied')), 500);
 		}
+	}
+	/**
+	 * This function will download the file
+	 * @param  [int] $fileId
+	 * @return [type]
+	 */
+	public function download($fileId)
+	{
+		$file = File::findOrFail($fileId);
+		$path = "user_" . $file->user_id . "/folder_" . $file->folder_id . "/" . $file->name;
+		return Storage::download($path);
 	}
 }

@@ -26,6 +26,8 @@ return [
 		'save_changes' => 'Save changes'
 	],
 	'successMessage' => [
+		'success' => 'Success',
+		'good_job' => 'Good Job!',
 		'folder_created' => 'Folder created successfully.',
 		'folder_ordering' => 'Folder ordering successfully.',
 		'folder_updated' => 'Folder updated successfully.',
@@ -37,6 +39,7 @@ return [
 		'file_copied' => 'File copied successfully',
 	],
 	'errorMessage' => [
+		'error' => 'Error!',
 		'folder_created' => 'Failed to create folder.',
 		'folder_updated' => 'Failed to update folder.',
 		'folder_deleted' => 'Failed to delete folder.',
@@ -54,6 +57,12 @@ return [
 		'folder_selection' => 'Please select folder to delete.',
 		'rename_selection' => 'Please select folder to rename.',
 		'warning' => "Are you sure?",
-		'delete_it' => "Yes, delete it!"
+		'delete_it' => "Yes, delete it!",
+		'folder_name' => "Folder name cannot be left blank",
+		'folder_name_max' => "Folder name cannot exceed 100 characters in length.",
+		'file_deleted' => "Once deleted, you will not be able to recover this file!",
+		'file_name' => "File name cannot be left blank",
+		'file_name_max' => "File name cannot exceed 100 characters in length.",
+		'file_not_found' => 'No files exist for selected folder!',
 	],
 ];

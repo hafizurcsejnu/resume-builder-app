@@ -203,6 +203,7 @@ Route::middleware([user::class])->group(function () {
     Route::get('get-file-by-id/{fileId}', [FileController::class, 'getFileById']);
     Route::POST('copy-file', [FileController::class, 'copyFile']);
     Route::get('check-file-exist/{folderId}', [FolderController::class, 'checkFileExist']);
+    Route::get('download/{fileId}', [FileController::class, 'download']);
 });
 
 

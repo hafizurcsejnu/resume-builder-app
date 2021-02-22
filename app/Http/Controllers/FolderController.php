@@ -106,7 +106,7 @@ class FolderController extends Controller
 	public function getTreeData () {
 		try {
 			$folders = Folder::with(['folders'])
-        	->where('user_id', session('user.id'))->get()->toArray();
+        	->where('user_id', session('user.id'))->orderBy('priority_order','ASC')->get()->toArray();
 			$count = Folder::where('user_id', session('user.id'))->count();
 		    if ($folders) {
 			    return Response::json(array('data' => $folders, 'count' => $count,'success' => 'success', 'message' => __('documents.successMessage.data_returned')), 200);
@@ -117,8 +117,8 @@ class FolderController extends Controller
 	}
 	/**
 	 * This function will check file count in selected folder
-	 * @param  [int] $folderId 
-	 * @return [json]           
+	 * @param  [int] $folderId
+	 * @return [json]
 	 */
 	public function checkFileExist($folderId){
 		$count = File::where('folder_id',$folderId)->count();

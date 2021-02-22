@@ -34,7 +34,7 @@ $( function() {
           if (data.success == 'success') {
             console.log('Folder sorted successfully');
           } else {
-            swal("Error!", window.I18n.trans(window.translations.documents.errorMessage.sorting), "error");
+            swal(window.I18n.trans(window.translations.documents.errorMessage.error), window.I18n.trans(window.translations.documents.errorMessage.sorting), "error");
           }
         }
       });
@@ -49,7 +49,7 @@ $( function() {
   $("#delete-folder").click(function() {
 
     if (!selectedFolder) {
-        swal("Error!", window.I18n.trans(window.translations.documents.warningMessage.folder_selection), "error");
+        swal(window.I18n.trans(window.translations.documents.errorMessage.error), window.I18n.trans(window.translations.documents.warningMessage.folder_selection), "error");
     } else {
       $.ajax({
         url: APP_URL + '/check-file-exist/'+ selectedFolder,
@@ -80,11 +80,11 @@ $( function() {
                   getFoldersFiles();
                   $("#delete-folder").prop("disabled", true);
                   $("#rename-folder").prop("disabled", true);
-                  swal("Good job!", data.message, "success");
+                  swal(window.I18n.trans(window.translations.documents.successMessage.good_job), data.message, "success");
                   $("#display-folder").html($('#sortableContainer li').length);
                 },
                 error: function (errorData) {
-                  swal("Error!", errorData.message, "error");
+                  swal(window.I18n.trans(window.translations.documents.errorMessage.error), errorData.message, "error");
                 }
               });
             }
@@ -99,7 +99,7 @@ $( function() {
    */
   $("#rename-folder").click(function() {
     if (!selectedFolder) {
-        swal("Error!", window.I18n.trans(window.translations.documents.warningMessage.rename_selection), "error");
+        swal(window.I18n.trans(window.translations.documents.successMessage.success), window.I18n.trans(window.translations.documents.warningMessage.rename_selection), "error");
     } else {
       $.ajax({
         type: 'GET',
@@ -117,7 +117,7 @@ $( function() {
           $('#createFolder').modal('toggle');
         },
         error: function (errorData) {
-          swal("Error!", errorData.message, "error");
+          swal(window.I18n.trans(window.translations.documents.errorMessage.error), errorData.message, "error");
         }
       });
     }
@@ -163,9 +163,9 @@ $( function() {
     }
 
     if (folderName.trim() == '') {
-      swal("Error!", "Folder name cannot be left blank", "error");
+      swal(window.I18n.trans(window.translations.documents.errorMessage.error), window.I18n.trans(window.translations.documents.warningMessage.folder_name), "error");
     } else if (folderName.length > 100) {
-      swal("Error!", "Folder name cannot exceed 100 characters in length.", "error");
+      swal(window.I18n.trans(window.translations.documents.errorMessage.error), window.I18n.trans(window.translations.documents.warningMessage.folder_name_max), "error");
     } else {
       $.ajax({
         type: 'POST',
@@ -179,7 +179,7 @@ $( function() {
         },
         success: function (data) {
           if (data.success == "error") {
-            swal("Error!", errorData.message, "error");
+            swal(window.I18n.trans(window.translations.documents.errorMessage.error), errorData.message, "error");
           } else {
             if (!folderId) {
               $("#sortableContainer").append(`<li class="list-group-item folder-list-item" id="${data.data.id}"><img class="mr-1" width="30px" src="${folderImageUrl}">${data.data.name}</li>`);
@@ -193,12 +193,12 @@ $( function() {
             $("#folderName").val('');
             $("#sideFolderId").val('');
             $('#createFolder').modal('toggle');
-            swal("Good job!", data.message, "success");
+            swal(window.I18n.trans(window.translations.documents.successMessage.good_job), data.message, "success");
           }
           $("#display-folder").html($('#sortableContainer li').length);
         },
         error: function (errorData) {
-          swal("Error!", errorData.responseJSON.errors.folderName[0], "error");
+          swal(window.I18n.trans(window.translations.documents.errorMessage.error), errorData.responseJSON.errors.folderName[0], "error");
         }
       });
     }
@@ -212,7 +212,7 @@ $( function() {
   $(document).on('click', '#deleteFile', function(event) {
       swal({
         title: window.I18n.trans(window.translations.documents.warningMessage.warning),
-        text: "Once deleted, you will not be able to recover this file!",
+        text: window.I18n.trans(window.translations.documents.warningMessage.file_deleted),
         icon: "warning",
         buttons: true,
         dangerMode: true,
@@ -230,11 +230,11 @@ $( function() {
               // loader code here
             },
             success: function (data) {
-              swal("Good job!", data.message, "success");
+              swal(window.I18n.trans(window.translations.documents.successMessage.good_job), data.message, "success");
               getFoldersFiles(type, selectedFolder);
             },
             error: function (errorData) {
-              swal("Error!", errorData.message, "error");
+              swal(window.I18n.trans(window.translations.documents.errorMessage.error), errorData.message, "error");
             }
           });
         }
@@ -262,7 +262,7 @@ $( function() {
         $("#renameFile").modal('toggle');
       },
       error: function (errorData) {
-        swal("Error!", errorData.message, "error");
+        swal(window.I18n.trans(window.translations.documents.errorMessage.error), errorData.message, "error");
       }
     });
   });
@@ -282,11 +282,11 @@ $( function() {
         // loader code here
       },
       success: function (data) {
-        swal("Good job!", data.message, "success");
+        swal(window.I18n.trans(window.translations.documents.successMessage.good_job), data.message, "success");
         getFoldersFiles(type, selectedFolder);
       },
       error: function (errorData) {
-        swal("Error!", errorData.message, "error");
+        swal(window.I18n.trans(window.translations.documents.errorMessage.error), errorData.message, "error");
       }
     });
   });
@@ -301,9 +301,9 @@ $( function() {
       fileId: fileId
     };
     if (fileName.trim() == '') {
-      swal("Error!", "File name cannot be left blank", "error");
+      swal(window.I18n.trans(window.translations.documents.errorMessage.error), window.I18n.trans(window.translations.documents.warningMessage.file_name), "error");
     } else if (fileName.length > 100) {
-      swal("Error!", "File name cannot exceed 100 characters in length.", "error");
+      swal(window.I18n.trans(window.translations.documents.errorMessage.error), window.I18n.trans(window.translations.documents.warningMessage.file_name_max), "error");
     } else {
       $.ajax({
         type: 'POST',
@@ -316,7 +316,7 @@ $( function() {
           // loader code here
         },
         success: function (data) {
-          swal("Good job!", data.message, "success");
+          swal(window.I18n.trans(window.translations.documents.successMessage.good_job), data.message, "success");
           $("#fileName").val('');
           $("#fileId").val('');
 
@@ -327,9 +327,9 @@ $( function() {
         },
         error: function (errorData) {
           if (typeof errorData.responseJSON.errors=='undefined') {
-            swal("Error!", errorData.responseJSON.message , "error");
+            swal(window.I18n.trans(window.translations.documents.errorMessage.error), errorData.responseJSON.message , "error");
           } else {
-            swal("Error!", errorData.responseJSON.errors.fileName[0] , "error");
+            swal(window.I18n.trans(window.translations.documents.errorMessage.error), errorData.responseJSON.errors.fileName[0] , "error");
           }
 
         }
@@ -364,7 +364,7 @@ function getFoldersList () {
       $('#display-folder').html(data.count);
     },
     error: function (errorData) {
-      swal("Error!", errorData.message, "error");
+      swal(window.I18n.trans(window.translations.documents.errorMessage.error), errorData.message, "error");
     }
   });
 }
@@ -408,7 +408,7 @@ function getFoldersFiles (type = 0, getFoldersFiles = 0) {
               <p class="card-text docs-card-body-text created-date pl-2">Created: ${file.created_at}</p>
               <div class="v-hover position-center h-100 w-100 mt-2 ml-1 text-center">
                 <a class="btn btn-primary btn-sm m-1" id="editFile" data-id="${file.id}" data-toggle="tooltip" data-placement="auto" title="Edit File"><i class="fa fa-pencil-alt"></i></a>
-                <a class="btn btn-info btn-sm m-1" id="downloadFile" data-id="${file.id}" href="${fileUrl}" data-toggle="tooltip" data-placement="auto" title="Download File" download><i class="fa fa-download"></i></a>
+                <a class="btn btn-info btn-sm m-1" id="downloadFile" data-id="${file.id}" href="${APP_URL}/download/${file.id}" data-toggle="tooltip" data-placement="auto" title="Download File"><i class="fa fa-download"></i></a>
                 <a class="btn btn-light btn-sm m-1" id="copyFile" data-id="${file.id}" data-toggle="tooltip" data-placement="auto" title="Clone File"><i class="fa fa-clone"></i></a>
                 <a class="btn btn-danger btn-sm m-1" id="deleteFile" data-id="${file.id}" data-toggle="tooltip" data-placement="auto" title="Delete File"><i class="fa fa-trash"></i></a>`;
                 if (file.file_type == 1 || file.file_type == 2) {
@@ -419,14 +419,14 @@ function getFoldersFiles (type = 0, getFoldersFiles = 0) {
           </div>`;
         });
       } else {
-        html += '<span>No files exist for selected folder!</span>'
+        html += '<span>'+window.I18n.trans(window.translations.documents.warningMessage.file_not_found)+'</span>'
       }
       $( "#display-file" ).html(data.visibleFileCount);
       $( "#allowed-file" ).html(data.totalCount);
       $( "#userFiles" ).html(html);
     },
     error: function (errorData) {
-      swal("Error!", errorData.message, "error");
+      swal(window.I18n.trans(window.translations.documents.errorMessage.error), errorData.message, "error");
     }
   });
 }
